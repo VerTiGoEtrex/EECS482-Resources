@@ -1,0 +1,32 @@
+[hub]
+        protocol = ssh
+
+[user]
+        name = AUTHORNAME
+        email = AUTHOREMAIL
+[alias]
+        co = checkout
+        count   = !git shortlog -sn
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim
+[mergetool]
+        prompt = false
+[difftool]
+        prompt = false
+[help]
+        autocorrect = 1
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to surpress warning message
+        default = current
+
+[branch]
+        autosetuprebase = always

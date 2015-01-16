@@ -6,8 +6,10 @@ A dumping ground for my EECS482 discussion/office hour tips.
 
 Some useful scripts. Add them to your path (on CAEN, you can make a ~/bin folder and add that folder to your path in your ~/.bashrc or ~/.zshrc)  
 
-Use  
+Use
+
     export PATH=~/bin:$PATH
+    
 in your RC to add the folder to your path  
 
 I better not see any output of "git-rank-contributers" in the project feedback though...  

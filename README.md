@@ -2,6 +2,8 @@
 
 A dumping ground for my EECS482 discussion/office hour tips.
 
+You can download non-text files by right clicking "raw" and using the normal save mechanism on your browser (or just clone the repo).
+
 ## Scripts ##
 
 Some useful scripts. Add them to your path (on CAEN, you can make a ~/bin folder and add that folder to your path in your ~/.bashrc or ~/.zshrc)  

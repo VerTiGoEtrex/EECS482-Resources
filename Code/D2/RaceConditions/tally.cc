@@ -1,13 +1,15 @@
 #include <cstdio>
 #include <cstdlib>
-#include <thread>
 #include <vector>
 #include <tuple>
+#include "thread.h"
 
-#include <signal.h>
+#include <signal.h> //Sigint handler
 
-using std::thread; using std::vector;
-using std::tuple; using std::make_tuple; using std::tie;
+using std::vector;
+using std::tuple;
+using std::make_tuple;
+using std::tie;
 
 
 static unsigned int NUM_THREADS = 2;
@@ -38,7 +40,7 @@ run_threads_until_failure()
 
         vector<thread *> threads;
         for (size_t i = 0; i < NUM_THREADS; i++) {
-            threads.push_back(new thread(total));
+            threads.push_back(new thread((thread_startfunc_t) total, 0));
         }
         for (thread *t : threads) {
             t->join();
@@ -56,6 +58,20 @@ run_threads_until_failure()
     return make_tuple(num_successes, num_failures);
 }
 
+void bootThread() {
+    unsigned int total_failures = 0, total_successes = 0;
+    while (running) {
+        unsigned int successes, failures;
+        tie(successes, failures) = run_threads_until_failure();
+        total_successes += successes;
+        total_failures += failures;
+    }
+
+    unsigned int total = total_successes + total_failures;
+    printf("Failure rate: %u out of %u (%f %%)\n",
+           total_failures, total, ((double) total_failures) / total * 100.0);
+}
+
 int main(int argc, char *argv[])
 {
     if (argc >= 2) NUM_THREADS = atoi(argv[1]);
@@ -69,17 +85,6 @@ int main(int argc, char *argv[])
     }
 
     signal(SIGINT, handler);
-    unsigned int total_failures = 0, total_successes = 0;
-    while (running) {
-        unsigned int successes, failures;
-        tie(successes, failures) = run_threads_until_failure();
-        total_successes += successes;
-        total_failures += failures;
-    }
-
-    unsigned int total = total_successes + total_failures;
-    printf("Failure rate: %u out of %u (%f %%)\n",
-           total_failures, total, ((double) total_failures) / total * 100.0);
-
+    cpu::boot((thread_startfunc_t) bootThread, 0, 0);
     return 0;
 }

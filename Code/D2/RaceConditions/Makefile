@@ -1,12 +1,15 @@
-CXXFLAGS := -Wall -Werror -g -std=c++11 -pthread
+CXXFLAGS := -Wall -Werror -O3 -std=c++11 
+LDFLAGS := -ldl -pthread
 
-all: tally tally.s
+OBJS = thread.o libcpu.a
+
+all: tally
 
 tally: tally.o
-	$(CXX) $(CXXFLAGS) -o $@ $<
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS) $^
 
-tally.s: tally.cc
-	$(CXX) $(CXXFLAGS) -S $<
+tally.o: tally.cc
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
-	rm -f tally tally.s *.o *~
+	rm -f tally.o tally *~

@@ -1,0 +1,2 @@
+Godbolt assembly showing non-atomicity for increment
+http://goo.gl/TyUD63

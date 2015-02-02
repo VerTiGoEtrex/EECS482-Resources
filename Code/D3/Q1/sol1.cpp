@@ -12,7 +12,7 @@ void woman_wants_to_enter() {
   active_women++;
 }
 
-woman_leaves() {
+void woman_leaves() {
   std::lock_guard<mutex> lk(bathroom_lock);
   active_women--;
   if (active_women == 0) {

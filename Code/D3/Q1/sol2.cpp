@@ -4,8 +4,11 @@ int active_men = 0, waiting_men = 0;
 int active_women = 0, waiting_women = 0;
 bool turn = WOMEN; /* init to either MEN or WOMEN */
 
+#define MEN true
+#define WOMEN false
+
 //better try: no starvation, fair
-woman_wants_to_enter() {
+void woman_wants_to_enter() {
   std::lock_guard<mutex> lk(bathroom_lock);
   while (active_men || (waiting_men && (turn == MEN))) {
     waiting_women++;
@@ -15,7 +18,7 @@ woman_wants_to_enter() {
   active_women++;
 }
 
-woman_leaves() {
+void woman_leaves() {
   std::lock_guard<mutex> lk(bathroom_lock);
   active_women--;
   if (active_women == 0) {

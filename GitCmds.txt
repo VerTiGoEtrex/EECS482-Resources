@@ -19,3 +19,5 @@ find -type d -mindepth 1 -maxdepth 1 | xargs -I{} git --git-dir={}/.git --work-t
 Get average number of lines in file
 find -type f -name cpu.c* -exec wc -l {} \; | cut -d ' ' -f1 | awk '{sum+=$1}END{printf "Sum=%d\nCount=%d\nAve=%.2f\n",sum,NR,sum/NR}'
 
+Get date of last submit (aggregate)
+find -type d -mindepth 1 -maxdepth 1 | xargs -I{} sh -c "echo '{}'; git --git-dir={}/.git --work-tree=/home/ncrocker/IA/repos/{} describe 2>&1" | grep -o "2015.[0-9]\+.[0-9]\+" | sort | uniq -c

@@ -1,3 +1,6 @@
 [submodule "DiscussionRefs/False-Sharing-Demo"]
 	path = DiscussionRefs/False-Sharing-Demo
 	url = git@github.com:VerTiGoEtrex/False-Sharing-Demo.git
+[submodule "DiscussionRefs/Spurious-Wakeup-Demo"]
+	path = DiscussionRefs/Spurious-Wakeup-Demo
+	url = git@github.com:VerTiGoEtrex/Spurious-Wakeup-Demo

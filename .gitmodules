@@ -4,3 +4,6 @@
 [submodule "DiscussionRefs/Spurious-Wakeup-Demo"]
 	path = DiscussionRefs/Spurious-Wakeup-Demo
 	url = git@github.com:VerTiGoEtrex/Spurious-Wakeup-Demo
+[submodule "DiscussionRefs/Parallel-Sort-Demo"]
+	path = DiscussionRefs/Parallel-Sort-Demo
+	url = git@github.com:VerTiGoEtrex/Parallel-Sort-Demo

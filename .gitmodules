@@ -7,3 +7,6 @@
 [submodule "DiscussionRefs/Parallel-Sort-Demo"]
 	path = DiscussionRefs/Parallel-Sort-Demo
 	url = git@github.com:VerTiGoEtrex/Parallel-Sort-Demo
+[submodule "DiscussionRefs/Makefile-Tutorial"]
+	path = DiscussionRefs/Makefile-Tutorial
+	url = git@github.com:VerTiGoEtrex/Makefile-Tutorial.git

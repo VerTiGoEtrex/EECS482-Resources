@@ -5,7 +5,7 @@ from github import Github
 import re
 
 # CONFIG
-TOKEN = 'bffe3d4bf36ba744d94a2211ed1faa5db048e896'
+TOKEN = 'UPDATEME'
 BLACKLIST = ["necrocke",
         "jflinn",
         "schmatz",
